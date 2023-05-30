@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>SELLER'S CATALOG</title>
+</head>
+<body>
+<h2>Seller's Catalog</h2>
+
+<table>
+    <thead>
+    <tr>
+        <ID></ID>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Action</th>
+        <form action="/logout" method="post">
+            <button type="submit">Logout</button>
+        </form>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.description}"></td>
+        <td th:text="${product.price}"></td>
+
+        <td>
+            <a th:href="@{/edit/{id}(id=${product.id})}">Edit</a>
+            <a th:href="@{/delete/{id}(id=${product.id})}">Delete</a>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/add}">Add Product</a>
+</body>
+</html>
